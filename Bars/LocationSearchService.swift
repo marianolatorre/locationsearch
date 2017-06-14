@@ -21,12 +21,14 @@ enum LocationType: String {
 /*
  Possible service errors
  TODO: this should by subclass of NSError instead and contain Domain
+ TODO: Support for localisation
  */
 enum LocationServiceError: String {
     case parsing = "Error while parsing json data"
     case jsonSerialization = "Error while using JSON serialization"
     case noData = "We did not receive data"
     case urlSetup = "Failed to create URL object"
+    case internetNotAvailable = "Internet is not available, check your connection"
 }
 
 enum Result<T> {
@@ -42,7 +44,7 @@ protocol LocationResponseParsable {
     func parseLocationSeachResponse(responseData: Data, callback: @escaping (Result<[Place]>) -> Void)
 }
 
-class LocationSearchService : LocationSearchable {
+class LocationSearchService : LocationSearchable, InternetReachable {
     
     private var locationResponseParser : LocationResponseParsable!
     var session = URLSession(configuration: URLSessionConfiguration.default)
@@ -77,6 +79,11 @@ class LocationSearchService : LocationSearchable {
      - callback with results or error message
      */
     func searchNearby(location: CLLocation, radius: Int, type: LocationType, callback: @escaping (Result<[Place]>) -> Void) {
+        
+        guard isInternetAvailable() == true else {
+            callback(Result.error(message: LocationServiceError.internetNotAvailable.rawValue))
+            return
+        }
         
         guard let url = setupRequest(location: location, radius: radius, type: type) else {
             callback(Result.error(message: LocationServiceError.urlSetup.rawValue))
