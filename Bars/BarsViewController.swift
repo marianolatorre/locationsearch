@@ -12,10 +12,14 @@ class BarsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    
     var barViewModel : BarViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.startAnimating()
         tableView.delegate = self
         tableView.dataSource = self
         barViewModel = BarViewModel(withDelegate:self)
@@ -25,9 +29,11 @@ class BarsViewController: UIViewController {
 extension BarsViewController : BarViewModelDelegate {
     func showBars(){
         tableView.reloadData()
+        loadingIndicator.stopAnimating()
     }
     func showError(message: String){
         self.show(errorMessage: message)
+        loadingIndicator.stopAnimating()
     }
 }
 

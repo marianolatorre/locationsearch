@@ -13,16 +13,6 @@ import CoreLocation
 
 class BarsTests: XCTestCase {
     
-    override func setUp() {
-        super.setUp()
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
-    
-    override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-        super.tearDown()
-    }
-    
     /*
      Place Model
      */
@@ -77,6 +67,10 @@ class BarsTests: XCTestCase {
         }
     }
     
+    /*
+     Bars View Model test
+     */
+    
     func testViewModel() {
         
         let viewModelExpectation = expectation(description: "View Model")
@@ -120,4 +114,13 @@ class BarsTests: XCTestCase {
         waitForExpectations(timeout:3)
     }
     
+    /*
+     Tests for URL initialiser that creates universal links for google maps
+     */
+    func testURLGoogleMapsExtension() {
+    
+        let location = CLLocation(latitude: 30, longitude:40)
+        let url = URL(location:location)
+        XCTAssertEqual(url.absoluteString, "https://www.google.com/maps/@30.0,40.0,19z")
+    }
 }

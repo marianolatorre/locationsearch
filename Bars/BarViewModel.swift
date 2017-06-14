@@ -34,13 +34,18 @@ struct BarDisplayModel {
     }
 }
 
+/*
+ Bar View Model
+ */
 class BarViewModel {
     
+    // dataSource can be consumed by the views
     public var dataSource : [BarDisplayModel]?
     
+    // delegate actions that the view can perform
     fileprivate weak var delegate: BarViewModelDelegate?
     
-    // Injectable properties to facilitate testing
+    // protocol injectable properties to facilitate testing
     let locationSearchService : LocationSearchable!
     let locationManager : DeviceLocationSearchable!
     
@@ -72,7 +77,9 @@ class BarViewModel {
         self.init(withDelegate: delegate, locationManager: nil, locationSearchService: nil)
     }
     
-    public init(withDelegate delegate: BarViewModelDelegate, locationManager:DeviceLocationSearchable?, locationSearchService: LocationSearchable? ){
+    public init(withDelegate delegate: BarViewModelDelegate,
+                locationManager:DeviceLocationSearchable?,
+                locationSearchService: LocationSearchable? ){
 
         self.delegate = delegate
         self.locationManager = locationManager ?? DeviceLocationManager()
@@ -80,12 +87,12 @@ class BarViewModel {
         self.locationManager.setupManager(delegate: self)
     }
     
-    
     public func openGoogleMaps(item: Int) {
-        let latitude =  bars?[item].location.coordinate.latitude ?? 0
-        let longitude =  bars?[item].location.coordinate.longitude ?? 0
+        guard let location = bars?[item].location else {
+            return
+        }
         
-        let url = URL(string:"https://www.google.com/maps/@\(latitude),\(longitude),19z")!
+        let url = URL(location:location)
         
         if #available(iOS 10.0, *) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
