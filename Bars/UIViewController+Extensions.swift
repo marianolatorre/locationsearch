@@ -2,7 +2,7 @@
 //  UIViewController+Extensions.swift
 //  Bars
 //
-//  Created by Mobile Developer Lloyds Bank on 14/06/2017.
+//  Created by Mariano Latorre on 14/06/2017.
 //  Copyright © 2017 Mariano Latorre. All rights reserved.
 //
 

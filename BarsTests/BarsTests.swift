@@ -2,7 +2,7 @@
 //  BarsTests.swift
 //  BarsTests
 //
-//  Created by Mariano Latorre on 13/06/2017.
+//  Created by Mariano Latorre on 14/06/2017.
 //  Copyright © 2017 Mariano Latorre. All rights reserved.
 //
 
