@@ -14,9 +14,7 @@ extension UIViewController {
     func show(errorMessage: String){
         
         let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: .default) { action in
-            
-        })
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler:nil))
         self.present(alertController, animated: true, completion:nil)
     }
 }
