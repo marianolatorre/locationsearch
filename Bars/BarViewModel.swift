@@ -14,7 +14,7 @@ import MapKit
  */
 protocol BarViewModelDelegate: class {
     func showBars()
-    func showError(error: String)
+    func showError(message: String)
 }
 
 /*
@@ -97,7 +97,7 @@ class BarViewModel {
     public func retrieveBars(){
         
         guard let currentLocation = currentLocation else {
-            delegate?.showError(error: "Error retrieving device location")
+            delegate?.showError(message: "Error retrieving device location")
             return
         }
         
@@ -111,7 +111,7 @@ class BarViewModel {
             DispatchQueue.main.async {
                 switch(result) {
                 case .error(let message):
-                    self.delegate?.showError(error: message)
+                    self.delegate?.showError(message: message)
                 case .success(let places):
                     self.bars = places
                     self.delegate?.showBars()

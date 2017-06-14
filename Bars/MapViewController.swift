@@ -33,8 +33,8 @@ extension MapViewController : BarViewModelDelegate {
             mapView.addAnnotations(annotations)
         }
     }
-    func showError(error: String){
-        present(errorMessage:error)
+    func showError(message: String){
+        show(errorMessage:message)
     }
 }
 

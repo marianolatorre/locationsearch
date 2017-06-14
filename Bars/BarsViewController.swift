@@ -26,8 +26,8 @@ extension BarsViewController : BarViewModelDelegate {
     func showBars(){
         tableView.reloadData()
     }
-    func showError(error: String){
-        self.present(errorMessage: error)
+    func showError(message: String){
+        self.show(errorMessage: message)
     }
 }
 

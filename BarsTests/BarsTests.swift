@@ -103,7 +103,7 @@ class BarsTests: XCTestCase {
                 XCTAssertEqual(viewModel.dataSource?.count, 4)
                 fulfillClosure()
             }
-            func showError(error: String) {
+            func showError(message: String) {
                 showErrorCalled = true
             }
         }

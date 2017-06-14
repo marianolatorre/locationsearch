@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
     
-    func present(errorMessage: String){
+    func show(errorMessage: String){
         
         let alertController = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "OK", style: .default) { action in
