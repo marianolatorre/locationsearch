@@ -9,7 +9,7 @@
 import UIKit
 import MapKit
 
-class MapViewController: BaseViewController {
+class MapViewController: UIViewController {
 
     var barViewModel : BarViewModel!
     var locationUpdated = false

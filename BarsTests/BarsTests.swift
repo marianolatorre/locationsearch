@@ -66,15 +66,58 @@ class BarsTests: XCTestCase {
                     case .error(let message):
                         print(message)
                     case .success(let places):
-                        if places.count == 4 &&
-                            places[0].name == "Rhythmboat Cruises" {
-                            parserExpectation.fulfill()
-                    }
+                        XCTAssertEqual(places[0].name, "Rhythmboat Cruises")
+                        XCTAssertEqual(places.count, 4)
+                        parserExpectation.fulfill()
+                    
                 }
             }
             
             waitForExpectations(timeout:3)
         }
+    }
+    
+    func testViewModel() {
+        
+        let viewModelExpectation = expectation(description: "View Model")
+        
+        let locationManager = DeviceLocationManagerMock()
+        locationManager.latestLocation = CLLocation (latitude: 30, longitude:40)
+        
+        let locationService = LocationSearchServiceMock()
+        
+        let fulfillClosure = {
+            viewModelExpectation.fulfill()
+        }
+        
+        class BarViewControllerMock : BarViewModelDelegate {
+            var viewModel : BarViewModel!
+            var showBarsCalled = false
+            var showErrorCalled = false
+            var fulfillClosure : ((Void) -> ())!
+            
+            func showBars(){
+                showBarsCalled = true
+                XCTAssertEqual(viewModel.dataSource?[0].name, "Rhythmboat Cruises")
+                XCTAssertEqual(viewModel.dataSource?[0].distance, 13629)
+                XCTAssertEqual(viewModel.dataSource?.count, 4)
+                fulfillClosure()
+            }
+            func showError(error: String) {
+                showErrorCalled = true
+            }
+        }
+        
+        let barViewController = BarViewControllerMock()
+        barViewController.fulfillClosure = fulfillClosure
+        
+        
+        barViewController.viewModel = BarViewModel(withDelegate:barViewController,
+                                          locationManager:locationManager,
+                                          locationSearchService: locationService)
+        
+        
+        waitForExpectations(timeout:3)
     }
     
 }

@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A428CBD71EF1777300C4EF1E /* locationSearchResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A428CBD61EF1777300C4EF1E /* locationSearchResponse.json */; };
+		A428CBD91EF17D2300C4EF1E /* LocationSearchServiceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428CBD81EF17D2300C4EF1E /* LocationSearchServiceMock.swift */; };
+		A428CBDB1EF17E6700C4EF1E /* DeviceLocationManagerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428CBDA1EF17E6700C4EF1E /* DeviceLocationManagerMock.swift */; };
+		A428CBDC1EF181AA00C4EF1E /* locationSearchResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A428CBD61EF1777300C4EF1E /* locationSearchResponse.json */; };
+		A428CBE11EF185ED00C4EF1E /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A428CBE01EF185ED00C4EF1E /* UIViewController+Extensions.swift */; };
 		A42F818B1EF06F4800A460F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F818A1EF06F4800A460F0 /* AppDelegate.swift */; };
 		A42F818D1EF06F4800A460F0 /* BarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F818C1EF06F4800A460F0 /* BarsViewController.swift */; };
 		A42F818F1EF06F4800A460F0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F818E1EF06F4800A460F0 /* MapViewController.swift */; };
@@ -21,7 +25,6 @@
 		A42F81CA1EF0790B00A460F0 /* LocationSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F81C91EF0790B00A460F0 /* LocationSearchService.swift */; };
 		A42F81D01EF0795200A460F0 /* DeviceLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F81CF1EF0795200A460F0 /* DeviceLocationManager.swift */; };
 		A4FBF0271EF0BC5F000B145C /* BarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FBF0261EF0BC5F000B145C /* BarTableViewCell.swift */; };
-		A4FBF02B1EF14B13000B145C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FBF02A1EF14B13000B145C /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +50,9 @@
 		6245DD8C276E567941566BF8 /* Pods-BarsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BarsUITests/Pods-BarsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		666420F3EC4EFAA28CB2C9EB /* Pods-BarsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BarsTests/Pods-BarsTests.debug.xcconfig"; sourceTree = "<group>"; };
 		A428CBD61EF1777300C4EF1E /* locationSearchResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locationSearchResponse.json; sourceTree = "<group>"; };
+		A428CBD81EF17D2300C4EF1E /* LocationSearchServiceMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchServiceMock.swift; sourceTree = "<group>"; };
+		A428CBDA1EF17E6700C4EF1E /* DeviceLocationManagerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLocationManagerMock.swift; sourceTree = "<group>"; };
+		A428CBE01EF185ED00C4EF1E /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		A42F81871EF06F4800A460F0 /* Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42F818A1EF06F4800A460F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42F818C1EF06F4800A460F0 /* BarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarsViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +72,6 @@
 		A42F81C91EF0790B00A460F0 /* LocationSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
 		A42F81CF1EF0795200A460F0 /* DeviceLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLocationManager.swift; sourceTree = "<group>"; };
 		A4FBF0261EF0BC5F000B145C /* BarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarTableViewCell.swift; sourceTree = "<group>"; };
-		A4FBF02A1EF14B13000B145C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D066BF5001DE5AB20A6A6735 /* Pods-Bars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bars/Pods-Bars.release.xcconfig"; sourceTree = "<group>"; };
 		FA5CD9B34A5B1F4634A69256 /* Pods-Bars.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bars.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bars/Pods-Bars.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -114,6 +119,14 @@
 				6245DD8C276E567941566BF8 /* Pods-BarsUITests.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		A428CBDF1EF185DB00C4EF1E /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				A428CBE01EF185ED00C4EF1E /* UIViewController+Extensions.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		A42F817E1EF06F4800A460F0 = {
@@ -203,8 +216,7 @@
 		A42F81BD1EF0759500A460F0 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
-				A4FBF02C1EF14B17000B145C /* UI */,
-				A4FBF0211EF08830000B145C /* Network */,
+				A428CBDF1EF185DB00C4EF1E /* Util */,
 				A42F81CE1EF0793200A460F0 /* Location */,
 			);
 			name = Platform;
@@ -222,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				A42F81C91EF0790B00A460F0 /* LocationSearchService.swift */,
+				A428CBD81EF17D2300C4EF1E /* LocationSearchServiceMock.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -238,15 +251,9 @@
 			isa = PBXGroup;
 			children = (
 				A42F81CF1EF0795200A460F0 /* DeviceLocationManager.swift */,
+				A428CBDA1EF17E6700C4EF1E /* DeviceLocationManagerMock.swift */,
 			);
 			name = Location;
-			sourceTree = "<group>";
-		};
-		A4FBF0211EF08830000B145C /* Network */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 		A4FBF0251EF0BC38000B145C /* View */ = {
@@ -255,14 +262,6 @@
 				A4FBF0261EF0BC5F000B145C /* BarTableViewCell.swift */,
 			);
 			name = View;
-			sourceTree = "<group>";
-		};
-		A4FBF02C1EF14B17000B145C /* UI */ = {
-			isa = PBXGroup;
-			children = (
-				A4FBF02A1EF14B13000B145C /* BaseViewController.swift */,
-			);
-			name = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -374,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A42F81971EF06F4800A460F0 /* LaunchScreen.storyboard in Resources */,
+				A428CBDC1EF181AA00C4EF1E /* locationSearchResponse.json in Resources */,
 				A42F81941EF06F4800A460F0 /* Assets.xcassets in Resources */,
 				A42F81921EF06F4800A460F0 /* Main.storyboard in Resources */,
 			);
@@ -405,8 +405,10 @@
 				A42F81C41EF076D100A460F0 /* Place.swift in Sources */,
 				A42F818B1EF06F4800A460F0 /* AppDelegate.swift in Sources */,
 				A42F81D01EF0795200A460F0 /* DeviceLocationManager.swift in Sources */,
+				A428CBD91EF17D2300C4EF1E /* LocationSearchServiceMock.swift in Sources */,
 				A4FBF0271EF0BC5F000B145C /* BarTableViewCell.swift in Sources */,
-				A4FBF02B1EF14B13000B145C /* BaseViewController.swift in Sources */,
+				A428CBE11EF185ED00C4EF1E /* UIViewController+Extensions.swift in Sources */,
+				A428CBDB1EF17E6700C4EF1E /* DeviceLocationManagerMock.swift in Sources */,
 				A42F81CA1EF0790B00A460F0 /* LocationSearchService.swift in Sources */,
 				A42F818D1EF06F4800A460F0 /* BarsViewController.swift in Sources */,
 				A42F81C71EF077B600A460F0 /* BarViewModel.swift in Sources */,
