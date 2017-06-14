@@ -7,7 +7,9 @@
 //
 
 import XCTest
+import CoreLocation
 @testable import Bars
+
 
 class BarsTests: XCTestCase {
     
@@ -21,15 +23,57 @@ class BarsTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    /*
+     Place Model
+     */
+    func testPlaceModel() {
+        
+        let location =  CLLocation(latitude: 30, longitude: 40)
+        let place = Place(name: "Bar 12", location: location)
+        
+        XCTAssertEqual(place.name, "Bar 12")
+        XCTAssertEqual(place.location.coordinate.latitude, 30)
+        XCTAssertEqual(place.location.coordinate.longitude, 40)
+    }
+
+    func testPlaceModelEmpty() {
+        
+        let location = CLLocation(latitude: 0, longitude: 0)
+        let place = Place(name: "", location: location)
+        
+        XCTAssertEqual(place.name, "")
+        XCTAssertEqual(place.location.coordinate.latitude, 0)
+        XCTAssertEqual(place.location.coordinate.longitude, 0)
     }
     
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    /*
+     Parser tests
+     TODO: implement more edge scenarios, like empty json, malformed json, missing fields, etc
+     */
+    
+    func testParser() {
+        
+        if let file = Bundle.main.url(forResource: "locationSearchResponse", withExtension: "json") {
+            let data = try! Data(contentsOf: file)
+            
+            let parserExpectation = expectation(description: "Parsing response")
+            let locationResponseParser = LocationResponseParser()
+            
+            locationResponseParser.parseLocationSeachResponse(responseData:data){
+                result in
+                
+                switch(result) {
+                    case .error(let message):
+                        print(message)
+                    case .success(let places):
+                        if places.count == 4 &&
+                            places[0].name == "Rhythmboat Cruises" {
+                            parserExpectation.fulfill()
+                    }
+                }
+            }
+            
+            waitForExpectations(timeout:3)
         }
     }
     

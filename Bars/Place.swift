@@ -12,7 +12,7 @@ import MapKit
 /*
  Places Model Object
  */
-class Place {
+struct Place {
 
     var name: String
     var location: CLLocation

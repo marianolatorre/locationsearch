@@ -10,8 +10,13 @@ import Foundation
 import CoreLocation
 
 
-protocol DeviceLocationSearchable: class {
+protocol DeviceLocationDelegate: class {
     func locationFound()
+}
+
+protocol DeviceLocationSearchable {
+    func setupManager(delegate: DeviceLocationDelegate)
+    var latestLocation:CLLocation? {get}
 }
 
 /*
@@ -19,17 +24,14 @@ protocol DeviceLocationSearchable: class {
  - Keeps track of the latest user location "latestLocation"
  - Requests authorization to use device location
  */
-class DeviceLocationManager : NSObject {
+class DeviceLocationManager : NSObject, DeviceLocationSearchable {
     
-    static let shared = DeviceLocationManager()
-    static let locationUpdatedNotification = "locationUpdatedNotification"
-
     private var locationManager = CLLocationManager()
     var latestLocation : CLLocation?
-    weak var delegate : DeviceLocationSearchable!
+    weak var delegate : DeviceLocationDelegate!
     
     /* Setup the location manager and request authorization */
-    func setupManager(delegate: DeviceLocationSearchable) {
+    func setupManager(delegate: DeviceLocationDelegate) {
         self.delegate = delegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.delegate = self

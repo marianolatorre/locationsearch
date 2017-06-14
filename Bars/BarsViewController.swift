@@ -37,8 +37,8 @@ extension BarsViewController : UITableViewDelegate, UITableViewDataSource {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "barCell", for: indexPath) as! BarTableViewCell
         
-        cell.name?.text = BarViewModel.dataSource?[indexPath.row].name ?? ""
-        cell.distance?.text = "Distance: \(BarViewModel.dataSource?[indexPath.row].distance ?? 0.0) Km"
+        cell.name?.text = barViewModel.dataSource?[indexPath.row].name ?? ""
+        cell.distance?.text = "Distance: \(barViewModel.dataSource?[indexPath.row].distance ?? 0.0) Km"
         
         return cell
     }
@@ -48,7 +48,7 @@ extension BarsViewController : UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return BarViewModel.dataSource?.count ?? 0
+        return barViewModel.dataSource?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

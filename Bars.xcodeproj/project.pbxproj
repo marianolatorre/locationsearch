@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A428CBD71EF1777300C4EF1E /* locationSearchResponse.json in Resources */ = {isa = PBXBuildFile; fileRef = A428CBD61EF1777300C4EF1E /* locationSearchResponse.json */; };
 		A42F818B1EF06F4800A460F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F818A1EF06F4800A460F0 /* AppDelegate.swift */; };
 		A42F818D1EF06F4800A460F0 /* BarsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F818C1EF06F4800A460F0 /* BarsViewController.swift */; };
 		A42F818F1EF06F4800A460F0 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F818E1EF06F4800A460F0 /* MapViewController.swift */; };
@@ -19,7 +20,6 @@
 		A42F81C71EF077B600A460F0 /* BarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F81C61EF077B600A460F0 /* BarViewModel.swift */; };
 		A42F81CA1EF0790B00A460F0 /* LocationSearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F81C91EF0790B00A460F0 /* LocationSearchService.swift */; };
 		A42F81D01EF0795200A460F0 /* DeviceLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A42F81CF1EF0795200A460F0 /* DeviceLocationManager.swift */; };
-		A4FBF0201EF0882A000B145C /* BaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FBF01F1EF0882A000B145C /* BaseService.swift */; };
 		A4FBF0271EF0BC5F000B145C /* BarTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FBF0261EF0BC5F000B145C /* BarTableViewCell.swift */; };
 		A4FBF02B1EF14B13000B145C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4FBF02A1EF14B13000B145C /* BaseViewController.swift */; };
 /* End PBXBuildFile section */
@@ -46,6 +46,7 @@
 		5778722FCF75CEB8B8CA8A16 /* Pods-BarsUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarsUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BarsUITests/Pods-BarsUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		6245DD8C276E567941566BF8 /* Pods-BarsUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarsUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BarsUITests/Pods-BarsUITests.release.xcconfig"; sourceTree = "<group>"; };
 		666420F3EC4EFAA28CB2C9EB /* Pods-BarsTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BarsTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BarsTests/Pods-BarsTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A428CBD61EF1777300C4EF1E /* locationSearchResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = locationSearchResponse.json; sourceTree = "<group>"; };
 		A42F81871EF06F4800A460F0 /* Bars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Bars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A42F818A1EF06F4800A460F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A42F818C1EF06F4800A460F0 /* BarsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarsViewController.swift; sourceTree = "<group>"; };
@@ -64,7 +65,6 @@
 		A42F81C61EF077B600A460F0 /* BarViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarViewModel.swift; sourceTree = "<group>"; };
 		A42F81C91EF0790B00A460F0 /* LocationSearchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationSearchService.swift; sourceTree = "<group>"; };
 		A42F81CF1EF0795200A460F0 /* DeviceLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceLocationManager.swift; sourceTree = "<group>"; };
-		A4FBF01F1EF0882A000B145C /* BaseService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseService.swift; sourceTree = "<group>"; };
 		A4FBF0261EF0BC5F000B145C /* BarTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarTableViewCell.swift; sourceTree = "<group>"; };
 		A4FBF02A1EF14B13000B145C /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		D066BF5001DE5AB20A6A6735 /* Pods-Bars.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bars.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bars/Pods-Bars.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,6 +155,7 @@
 		A42F81A01EF06F4800A460F0 /* BarsTests */ = {
 			isa = PBXGroup;
 			children = (
+				A428CBD61EF1777300C4EF1E /* locationSearchResponse.json */,
 				A42F81A11EF06F4800A460F0 /* BarsTests.swift */,
 				A42F81A31EF06F4800A460F0 /* Info.plist */,
 			);
@@ -244,7 +245,6 @@
 		A4FBF0211EF08830000B145C /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A4FBF01F1EF0882A000B145C /* BaseService.swift */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -289,12 +289,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A42F81B41EF06F4800A460F0 /* Build configuration list for PBXNativeTarget "BarsTests" */;
 			buildPhases = (
-				337EA406F4A7981624BE191F /* [CP] Check Pods Manifest.lock */,
 				A42F81991EF06F4800A460F0 /* Sources */,
 				A42F819A1EF06F4800A460F0 /* Frameworks */,
 				A42F819B1EF06F4800A460F0 /* Resources */,
-				C83113B4546EAE8390E5E7A6 /* [CP] Embed Pods Frameworks */,
-				F857B807B62952CB1392573C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -310,12 +307,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A42F81B71EF06F4800A460F0 /* Build configuration list for PBXNativeTarget "BarsUITests" */;
 			buildPhases = (
-				E2B2F57C8DC71CDD3C27F19D /* [CP] Check Pods Manifest.lock */,
 				A42F81A41EF06F4800A460F0 /* Sources */,
 				A42F81A51EF06F4800A460F0 /* Frameworks */,
 				A42F81A61EF06F4800A460F0 /* Resources */,
-				615646347082FA31704F73F1 /* [CP] Embed Pods Frameworks */,
-				9E0CD4430825C0C70E366BA6 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -389,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A428CBD71EF1777300C4EF1E /* locationSearchResponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,99 +395,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		337EA406F4A7981624BE191F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		615646347082FA31704F73F1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BarsUITests/Pods-BarsUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9E0CD4430825C0C70E366BA6 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BarsUITests/Pods-BarsUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		C83113B4546EAE8390E5E7A6 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BarsTests/Pods-BarsTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E2B2F57C8DC71CDD3C27F19D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		F857B807B62952CB1392573C /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BarsTests/Pods-BarsTests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A42F81831EF06F4800A460F0 /* Sources */ = {
@@ -507,7 +409,6 @@
 				A4FBF02B1EF14B13000B145C /* BaseViewController.swift in Sources */,
 				A42F81CA1EF0790B00A460F0 /* LocationSearchService.swift in Sources */,
 				A42F818D1EF06F4800A460F0 /* BarsViewController.swift in Sources */,
-				A4FBF0201EF0882A000B145C /* BaseService.swift in Sources */,
 				A42F81C71EF077B600A460F0 /* BarViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -696,8 +597,11 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
 				INFOPLIST_FILE = BarsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marianolatorre.bars.BarsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
@@ -711,8 +615,10 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = BarsTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_CFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.marianolatorre.bars.BarsTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;

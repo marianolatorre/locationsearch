@@ -29,7 +29,23 @@ enum LocationServiceError: String {
     case urlSetup = "Failed to create URL object"
 }
 
-class LocationSearchService : BaseService {
+enum Result<T> {
+    case success(response: T)
+    case error(message: String)
+}
+
+protocol LocationSearchable {
+    func searchNearby(location: CLLocation, radius: Int, type: LocationType, callback: @escaping (Result<[Place]>) -> Void)
+}
+
+protocol LocationResponseParsable {
+    func parseLocationSeachResponse(responseData: Data, callback: @escaping (Result<[Place]>) -> Void)
+}
+
+class LocationSearchService : LocationSearchable {
+    
+    private var locationResponseParser : LocationResponseParsable!
+    var session = URLSession(configuration: URLSessionConfiguration.default)
     
     /*
      Request constants
@@ -49,16 +65,8 @@ class LocationSearchService : BaseService {
         static let type = "type"
     }
     
-    /*
-     all the field names we need to capture from response
-     */
-    private struct ResponseFields {
-        static let results = "results"
-        static let name = "name"
-        static let geometry = "geometry"
-        static let location = "location"
-        static let lat = "lat"
-        static let lng = "lng"
+    init(withParser parser: LocationResponseParsable) {
+        locationResponseParser = parser
     }
     
     /*
@@ -88,60 +96,18 @@ class LocationSearchService : BaseService {
                 return
             }
             
-            // array of model objects
-            var places = [Place]()
-            
-            do {
-                // let's try to parse to JSON
-                guard let json = try JSONSerialization.jsonObject(with: responseData, options: [])
-                    as? [String: Any] else {
-                        callback(Result.error(message:LocationServiceError.jsonSerialization.rawValue))
-                        return
-                }
-                
-                // let's capture the 'results' array from JSON object
-                guard let results = json[ResponseFields.results] as? Array<NSDictionary> else {
-                    callback(Result.error(message:  LocationServiceError.parsing.rawValue))
-                    return
-                }
-                
-                // Parsing into model object
-                // TODO: Use a parsing library like SwiftyJSON or equivalent and
-                // make this more resilient.
-                
-                for result in results {
-                    
-                    let name = result[ResponseFields.name] as! String
-                    var coordinate : CLLocation!
-                    
-                    if let geometry = result[ResponseFields.geometry] as? NSDictionary {
-                        if let location = geometry[ResponseFields.location] as? NSDictionary {
-                            let lat = location[ResponseFields.lat] as! CLLocationDegrees
-                            let long = location[ResponseFields.lng] as! CLLocationDegrees
-                            coordinate = CLLocation(latitude: lat, longitude: long)
-                            let place = Place(name:name, location: coordinate)
-                            places.append(place)
-                        }
-                    }
-                }
-                
-                // happy path
-                callback(Result.success(response: places))
-                
-            } catch  {
-                // error while parsing
-                callback(Result.error(message:LocationServiceError.parsing.rawValue))
-                return
-            }
-                        
+            self.locationResponseParser.parseLocationSeachResponse(responseData:responseData, callback:callback)
+                   
         }.resume()
     }
     
+
+    
     /*
-     Sets up the URL object, example: 
+     Sets up the URL object, example:
          https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362&radius=500&type=restaurant&keyword=cruise&key=YOUR_API_KEY
      */
-    private func setupRequest(location: CLLocation, radius: Int, type: LocationType) -> URL? {
+    func setupRequest(location: CLLocation, radius: Int, type: LocationType) -> URL? {
         
         let urlString = Constants.placesURL +
                 "\(UrlParams.location)=\(location.coordinate.latitude),\(location.coordinate.longitude)&" +
@@ -149,5 +115,69 @@ class LocationSearchService : BaseService {
                 "\(UrlParams.key)=\(Constants.placesKey)&" +
                 "\(UrlParams.type)=\(type.rawValue)"
         return URL(string:urlString)
+    }
+}
+
+class LocationResponseParser : LocationResponseParsable {
+    
+    /*
+     all the field names we need to capture from response
+     */
+    private struct ResponseFields {
+        static let results = "results"
+        static let name = "name"
+        static let geometry = "geometry"
+        static let location = "location"
+        static let lat = "lat"
+        static let lng = "lng"
+    }
+    
+    func parseLocationSeachResponse(responseData: Data, callback: @escaping (Result<[Place]>) -> Void) {
+        
+        // array of model objects
+        var places = [Place]()
+        
+        do {
+            // let's try to parse to JSON
+            guard let json = try JSONSerialization.jsonObject(with: responseData, options: [])
+                as? [String: Any] else {
+                    callback(Result.error(message:LocationServiceError.jsonSerialization.rawValue))
+                    return
+            }
+            
+            // let's capture the 'results' array from JSON object
+            guard let results = json[ResponseFields.results] as? Array<NSDictionary> else {
+                callback(Result.error(message:  LocationServiceError.parsing.rawValue))
+                return
+            }
+            
+            // Parsing into model object
+            // TODO: Use a parsing library like SwiftyJSON or equivalent and
+            // make this more resilient.
+            
+            for result in results {
+                
+                let name = result[ResponseFields.name] as! String
+                var coordinate : CLLocation!
+                
+                if let geometry = result[ResponseFields.geometry] as? NSDictionary {
+                    if let location = geometry[ResponseFields.location] as? NSDictionary {
+                        let lat = location[ResponseFields.lat] as! CLLocationDegrees
+                        let long = location[ResponseFields.lng] as! CLLocationDegrees
+                        coordinate = CLLocation(latitude: lat, longitude: long)
+                        let place = Place(name:name, location: coordinate)
+                        places.append(place)
+                    }
+                }
+            }
+            
+            // happy path
+            callback(Result.success(response: places))
+            
+        } catch  {
+            // error while parsing
+            callback(Result.error(message:LocationServiceError.parsing.rawValue))
+            return
+        }
     }
 }

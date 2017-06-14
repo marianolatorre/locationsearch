@@ -20,7 +20,7 @@ protocol BarViewModelDelegate: class {
 /*
  Display Model for Bars, contains the only data needed by the View
  */
-class BarDisplayModel {
+struct BarDisplayModel {
     let name: String
     let distance: Double
     let location: CLLocation
@@ -36,16 +36,22 @@ class BarDisplayModel {
 
 class BarViewModel {
     
-    fileprivate weak var delegate: BarViewModelDelegate?
-    fileprivate let locationSearchService = LocationSearchService()
-    static var dataSource : [BarDisplayModel]?
+    public var dataSource : [BarDisplayModel]?
     
-    fileprivate static var bars : [Place]? {
+    fileprivate weak var delegate: BarViewModelDelegate?
+    
+    // Injectable properties to facilitate testing
+    let locationSearchService : LocationSearchable!
+    let locationManager : DeviceLocationSearchable!
+    
+    fileprivate var currentLocation : CLLocation?
+    
+    fileprivate var bars : [Place]? {
         willSet {
-            guard let currentLocation = BarViewModel.currentLocation else {
+            guard let currentLocation = currentLocation else {
                 return
             }
-            BarViewModel.dataSource = newValue?.map({
+            dataSource = newValue?.map({
                 let distanceMeters = $0.location.distance(from:currentLocation)
                 let distanceKm =  Double(round(10*(distanceMeters/1000))/10)
                 
@@ -58,21 +64,26 @@ class BarViewModel {
             })
         }
     }
-    fileprivate static var currentLocation : CLLocation?
     
-    public init(withDelegate delegate: BarViewModelDelegate) {
-        self.delegate = delegate
-        
-        if BarViewModel.currentLocation == nil {
-            DeviceLocationManager.shared.setupManager(delegate: self)
-        }else {
-            retrieveBars()
-        }
+    /*
+     Initializers
+     */
+    convenience public init(withDelegate delegate: BarViewModelDelegate) {
+        self.init(withDelegate: delegate, locationManager: nil, locationSearchService: nil)
     }
     
+    public init(withDelegate delegate: BarViewModelDelegate, locationManager:DeviceLocationSearchable?, locationSearchService: LocationSearchable? ){
+
+        self.delegate = delegate
+        self.locationManager = locationManager ?? DeviceLocationManager()
+        self.locationSearchService = locationSearchService ?? LocationSearchService(withParser:LocationResponseParser())
+        self.locationManager.setupManager(delegate: self)
+    }
+    
+    
     public func openGoogleMaps(item: Int) {
-        let latitude =  BarViewModel.bars?[item].location.coordinate.latitude ?? 0
-        let longitude =  BarViewModel.bars?[item].location.coordinate.longitude ?? 0
+        let latitude =  bars?[item].location.coordinate.latitude ?? 0
+        let longitude =  bars?[item].location.coordinate.longitude ?? 0
         
         let url = URL(string:"https://www.google.com/maps/@\(latitude),\(longitude),19z")!
         
@@ -85,19 +96,12 @@ class BarViewModel {
     
     public func retrieveBars(){
         
-        guard BarViewModel.bars == nil else {
-                self.delegate?.showBars()
-                return
-        }
-        
-        guard let currentLocation = BarViewModel.currentLocation else {
+        guard let currentLocation = currentLocation else {
             delegate?.showError(error: "Error retrieving device location")
             return
         }
         
-        let service = LocationSearchService()
-        
-        service.searchNearby(location: currentLocation, radius: 1000, type: .bar) {
+        self.locationSearchService.searchNearby(location: currentLocation, radius: 1000, type: .bar) {
             [weak self] (result) in
             
             guard let `self` = self else {
@@ -109,7 +113,7 @@ class BarViewModel {
                 case .error(let message):
                     self.delegate?.showError(error: message)
                 case .success(let places):
-                    BarViewModel.bars = places
+                    self.bars = places
                     self.delegate?.showBars()
                 }
             }
@@ -117,9 +121,9 @@ class BarViewModel {
     }
 }
 
-extension BarViewModel : DeviceLocationSearchable {
+extension BarViewModel : DeviceLocationDelegate {
     func locationFound() {
-        BarViewModel.currentLocation = DeviceLocationManager.shared.latestLocation
+        currentLocation = locationManager.latestLocation
         retrieveBars()
     }
 }

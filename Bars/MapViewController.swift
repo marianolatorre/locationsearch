@@ -27,7 +27,7 @@ class MapViewController: BaseViewController {
 
 extension MapViewController : BarViewModelDelegate {
     func showBars(){
-        let annotations = BarViewModel.dataSource?.map({$0.annotation})
+        let annotations = barViewModel.dataSource?.map({$0.annotation})
         
         if let annotations = annotations {
             mapView.addAnnotations(annotations)
